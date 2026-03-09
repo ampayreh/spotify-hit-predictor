@@ -211,7 +211,7 @@ with tab2:
     counts = df["is_popular"].value_counts().sort_index()
     sns.countplot(x="is_popular", data=df, ax=ax, palette=["#4C72B0", "#DD8452"])
     for i, v in enumerate(counts):
-        ax.text(i, v + 500, f"{v:,}\n({v / len(df) * 100:.1f}%)", ha="center", fontsize=11)
+        ax.text(i, v * 0.5, f"{v:,}\n({v / len(df) * 100:.1f}%)", ha="center", va="center", fontsize=11, fontweight="bold", color="white")
     ax.set_xticklabels(["Not Popular (0)", "Popular (1)"])
     ax.set_title("Target Distribution: is_popular (popularity >= 50)")
     plt.tight_layout()
