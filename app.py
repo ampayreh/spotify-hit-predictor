@@ -490,8 +490,13 @@ with tab4:
                         explainer = shap.TreeExplainer(clf_step)
                         shap_vals = explainer(X_df)
 
+                        # Handle multi-output (binary) SHAP values — use class 1 (popular)
+                        sv = shap_vals[0]
+                        if len(sv.shape) > 1 and sv.shape[-1] == 2:
+                            sv = sv[..., 1]
+
                         fig_w, ax_w = plt.subplots(figsize=(8, 5))
-                        shap.plots.waterfall(shap_vals[0], max_display=12, show=False)
+                        shap.plots.waterfall(sv, max_display=12, show=False)
                         plt.title("SHAP Waterfall — Your Custom Input")
                         plt.tight_layout()
                         st.pyplot(fig_w)
