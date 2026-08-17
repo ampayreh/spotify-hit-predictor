@@ -6,10 +6,6 @@
 
 **Task:** Binary classification — predict `is_popular` (1 if popularity >= 50, else 0).
 
-## Deployed App
-
-[Streamlit Community Cloud URL — TBD after deployment]
-
 ## How to Run Locally
 
 ```bash
